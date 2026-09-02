@@ -26,16 +26,12 @@ export const TopBar = forwardRef<HTMLButtonElement, TopBarProps>(function TopBar
       </div>
 
       <div className="actions">
-        <div className="date-badge">
-          <i className="far fa-calendar-alt" style={{ color: '#2563eb', marginRight: 6 }} /> Aug 24, 2026
-        </div>
-        <div className="notif">
-          <i className="fas fa-bell" />
-          <span className="badge">4</span>
-        </div>
         <button className="btn-primary" id="globalActionBtn" onClick={onGlobalAction}>
           <i className="fas fa-plus" /> New
         </button>
+        <div className="topbar-user-avatar" title="labeeb.eee_candidate">
+          <i className="fas fa-user" />
+        </div>
       </div>
     </div>
   );

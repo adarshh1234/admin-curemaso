@@ -112,13 +112,6 @@ export function ErpDashboardPage({ onNavigateModule }: ErpDashboardPageProps) {
         </button>
         <button
           type="button"
-          className={`tab-btn ${activeTab === 'calendar' ? 'active' : ''}`}
-          onClick={() => setActiveTab('calendar')}
-        >
-          <i className="fas fa-calendar-alt" /> Calendar
-        </button>
-        <button
-          type="button"
           className={`tab-btn ${activeTab === 'reports' ? 'active' : ''}`}
           onClick={() => setActiveTab('reports')}
         >

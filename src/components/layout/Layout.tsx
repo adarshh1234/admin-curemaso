@@ -1,8 +1,10 @@
 import type { ReactNode } from 'react';
 import type { ModuleItem } from '../../types/module';
 import { useSidebar } from '../../hooks/useSidebar';
+import { useSlidePanel } from '../../hooks/useSlidePanel';
 import { Sidebar } from './Sidebar';
 import { RightSidebar } from './RightSidebar';
+import { BitrixSlidePanel } from './BitrixSlidePanel';
 import { TopBar } from './TopBar';
 
 interface LayoutProps {
@@ -39,6 +41,8 @@ export function Layout({
     sidebarRef,
     hamburgerRef,
   } = useSidebar();
+
+  const { panelState, openPanel, closePanel, selectTab } = useSlidePanel();
 
   function handleSelectModule(id: number) {
     onSelectModule(id);
@@ -89,7 +93,17 @@ export function Layout({
           <span>Omnichannel · ERP sync · AI Copilot · Geo CRM</span>
         </div>
       </div>
-      <RightSidebar />
+      <RightSidebar
+        onOpenPanel={openPanel}
+        activePanelTab={panelState.activeTab}
+        isPanelOpen={panelState.isOpen}
+      />
+      <BitrixSlidePanel
+        panelState={panelState}
+        onClose={closePanel}
+        onSelectTab={selectTab}
+        onNavigateModule={handleSelectModule}
+      />
     </>
   );
 }

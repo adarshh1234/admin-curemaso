@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { forwardRef, useState } from 'react';
 import type { ModuleItem } from '../../types/module';
 
 interface SidebarProps {
@@ -33,6 +33,7 @@ export const Sidebar = forwardRef<HTMLElement, SidebarProps>(function Sidebar(
   },
   ref,
 ) {
+  const [userMenuOpen, setUserMenuOpen] = useState<boolean>(false);
   const collapsed = isCollapsed && !isHoverExpanded;
 
   return (
@@ -42,7 +43,10 @@ export const Sidebar = forwardRef<HTMLElement, SidebarProps>(function Sidebar(
         id="sidebar"
         ref={ref}
         onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
+        onMouseLeave={() => {
+          onMouseLeave();
+          setUserMenuOpen(false);
+        }}
       >
         <div className="logo">
           <span className="logo-text">E.</span>
@@ -122,10 +126,42 @@ export const Sidebar = forwardRef<HTMLElement, SidebarProps>(function Sidebar(
           {!collapsed && (
             <>
               <div className="info">
-                <div className="name">labeeb.eee_candidate</div>
+                <div className="name" title="labeeb.eee_candidate">
+                  labeeb.eee_candidate
+                </div>
                 <div className="role">ERP · Full Navigation</div>
               </div>
-              <i className="fas fa-ellipsis-v" style={{ color: '#8e9bb5', cursor: 'pointer' }} />
+              <button
+                type="button"
+                className="user-card-menu-btn"
+                onClick={() => setUserMenuOpen((prev) => !prev)}
+                title="Account options"
+              >
+                <i className="fas fa-ellipsis-v" />
+              </button>
+
+              {userMenuOpen && (
+                <div className="user-card-dropdown">
+                  <div className="user-dropdown-header">
+                    <div className="user-dropdown-name">labeeb.eee_candidate</div>
+                    <div className="user-dropdown-email">labeeb@curemaso.com</div>
+                  </div>
+                  <div className="user-dropdown-divider" />
+                  <button
+                    type="button"
+                    className="user-dropdown-item signout-btn"
+                    onClick={() => {
+                      setUserMenuOpen(false);
+                      if (window.confirm('Are you sure you want to sign out?')) {
+                        window.location.reload();
+                      }
+                    }}
+                  >
+                    <i className="fas fa-sign-out-alt" />
+                    <span>Sign Out</span>
+                  </button>
+                </div>
+              )}
             </>
           )}
         </div>
