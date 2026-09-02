@@ -1,0 +1,68 @@
+import type { InboxFilterOption, InboxMessage } from '../types/inbox';
+
+export const INBOX_MESSAGES: InboxMessage[] = [
+  {
+    id: 'msg-1',
+    channel: 'whatsapp',
+    contactName: 'Sarah Chen',
+    preview: '"Can we schedule a demo for next Tuesday?"',
+    timeLabel: '2 min ago',
+    metaLabel: 'AI summarized',
+    iconBg: '#dbeafe',
+    iconColor: '#2563eb',
+  },
+  {
+    id: 'msg-2',
+    channel: 'email',
+    contactName: 'Mark Rivera',
+    preview: '"Proposal feedback — looks great, let\'s move forward"',
+    timeLabel: '1h ago',
+    metaLabel: 'Copilot draft',
+    metaIcon: 'fas fa-robot',
+    metaIconColor: '#7c3aed',
+    iconBg: '#e0f2fe',
+    iconColor: '#0891b2',
+  },
+  {
+    id: 'msg-3',
+    channel: 'call',
+    contactName: 'James Okafor',
+    preview: '"Great conversation — next steps: contract review"',
+    timeLabel: '3h ago',
+    metaLabel: 'transcribed',
+    metaIcon: 'fas fa-microphone',
+    iconBg: '#fce7f3',
+    iconColor: '#db2777',
+  },
+  {
+    id: 'msg-4',
+    channel: 'sms',
+    contactName: 'Priya Sharma',
+    preview: '"Thanks for the update, I\'ll share with my team."',
+    timeLabel: '5h ago',
+    metaLabel: 'Auto-logged',
+    iconBg: '#fef3c7',
+    iconColor: '#d97706',
+  },
+  {
+    id: 'msg-5',
+    channel: 'video',
+    contactName: 'Lena Müller',
+    preview: '"Meeting recording available — key decisions noted."',
+    timeLabel: 'Yesterday',
+    metaLabel: 'summary',
+    metaIcon: 'fas fa-robot',
+    metaIconColor: '#7c3aed',
+    iconBg: '#f3e8ff',
+    iconColor: '#7c3aed',
+  },
+];
+
+export const INBOX_FILTERS: InboxFilterOption[] = [
+  { id: 'all', label: 'All' },
+  { id: 'whatsapp', label: 'WhatsApp', icon: 'fab fa-whatsapp' },
+  { id: 'email', label: 'Email', icon: 'fas fa-envelope' },
+  { id: 'sms', label: 'SMS', icon: 'fas fa-sms' },
+  { id: 'call', label: 'Call', icon: 'fas fa-phone-alt' },
+  { id: 'video', label: 'Video', icon: 'fas fa-video' },
+];
